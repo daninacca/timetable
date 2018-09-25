@@ -23,6 +23,7 @@ export class TimeTableComponent implements OnInit {
     this.dbService.getTimeTable()
     this.ttsService.timeTableChanged
       .subscribe((slots) => {
+        this.timeTableSlots = []
         this.construct(slots)
       })
   }
@@ -36,15 +37,9 @@ export class TimeTableComponent implements OnInit {
     this.ttsService.reset()
   }
   construct(slots) {
-    this.timeTableSlots = []
     // loop rows
     for(let i = 0; i < 9; i++) {
-      const newArr = []
-      slots.map((e) => {
-        if(e.row === i + 1) {
-              newArr.push(e)
-        }
-      })
+      const newArr = slots.filter(e => e.row === i + 1)
       // loop cols & create dummies
       for(let l = 0; l < 6; l++) {
         if(!newArr.find((slot) => slot.col === l)) {
