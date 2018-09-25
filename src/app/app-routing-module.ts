@@ -8,10 +8,10 @@ import { AuthGuard } from './auth/auth-guard.service';
 
 const appRoutes: Routes = [
     { path: '', redirectTo: '/timetable', pathMatch: 'full', 
-        // canActivate:[AuthGuard]
+        canActivate:[AuthGuard]
     },
     { path: 'timetable', component: TimeTableComponent, 
-        // canActivate:[AuthGuard]
+        canActivate:[AuthGuard]
     },
     { path: 'signup', component: SignupComponent },
     { path: 'signin', component: SigninComponent }
