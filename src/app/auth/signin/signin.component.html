@@ -1,5 +1,5 @@
-<div class="row"> 
-  <div class="col-xs-12 col-sm-10 col-md-8 offset-sm-1 offset-md-2">
+<div [@load] class="row"> 
+  <div class="col-xs-5 col-sm-5 col-md-4 offset-sm-1 offset-md-4">
     <form (ngSubmit)="onSignIn(f)" #f="ngForm">
       <div class="form-group">
         <label for="email">Email</label>
@@ -10,7 +10,7 @@
         <input type="password" id="password" name="password" ngModel class="form-control">
       </div>
       <p *ngIf="message">{{ message }}</p>
-      <button class="btn btn-primary" type="submit">Log In</button>
+      <button class="btn btn-info" type="submit">Log In</button>
     </form>
   </div>
 </div>

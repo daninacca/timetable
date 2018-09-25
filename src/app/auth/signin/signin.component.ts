@@ -1,11 +1,13 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { AuthService } from '../auth.service';
+import { Component, OnInit, OnDestroy } from '@angular/core'
+import { NgForm } from '@angular/forms'
+
+import { AuthService } from '../auth.service'
+import { load } from '../../shared/animation'
 
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
-  styleUrls: ['./signin.component.css']
+  animations: [ load ]
 })
 export class SigninComponent implements OnInit, OnDestroy {
   message: string

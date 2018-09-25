@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { HttpModule } from '@angular/http'
 import { AppRoutingModule } from './app-routing-module'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 import { AppComponent } from './app.component'
 import { TimeTableComponent } from './timetable/time-table.component'
@@ -14,6 +15,7 @@ import { DataStorageService } from './shared/data-storage.service';
 import { AuthService } from './auth/auth.service';
 import { SigninComponent } from './auth/signin/signin.component'
 import { AuthGuard } from './auth/auth-guard.service';
+import { ModalComponent } from './timetable/modal/modal.component';
 
 
 @NgModule({
@@ -22,14 +24,16 @@ import { AuthGuard } from './auth/auth-guard.service';
     TimeTableComponent,
     SignupComponent,
     HeaderComponent,
-    SigninComponent
+    SigninComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule
   ],
   providers: [
     TimeTableSlotService, 

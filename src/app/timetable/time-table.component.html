@@ -1,9 +1,9 @@
-<div class="container-fluid">
+<div [@load] class="container-fluid mb-5">
   <div class="row">
-    <div class="col-md-10">
-      <table class="table table-bordered">
+    <div class="col-md-10 offset-md-1">
+      <table class="table table-bordered shadow-sm">
         <thead>
-          <tr>
+          <tr class="table-info">
             <th></th>
             <th>Maandag</th>
             <th>Dinsdag</th>
@@ -20,7 +20,7 @@
                 <span 
                  *ngIf="slot.col !== 0 && slot.name !== ''"
                  (click)="onDelete(slot)"
-                 class="x">
+                 class="border border-dark float-right x">
                   X
                 </span>
               </span>
@@ -30,69 +30,29 @@
       </table>
     </div>
   </div>
-  <hr>
   <div class="row">
-    <div class="col-md-10 offset-md-1">
-      <form (ngSubmit)="onSubmit(f)" #f="ngForm">
-        <div class="row">
-          <div class="col-xs-1 form-group">
-            <label for="name">Naam</label>
-            <input
-             type="text"
-             id="name"
-             name="name"
-             class="form-control"
-             ngModel
-             required>
-          </div>
-          <div class="col-xs-1 form-group">
-            <label for="col">Welke dag?</label>
-            <select 
-             name="col"
-             id="col"
-             class="form-control"
-             ngModel
-             required>
-              <option value=1>Maandag</option>
-              <option value=2>Dinsdag</option>
-              <option value=3>Woensdag</option>
-              <option value=4>Donderdag</option>
-              <option value=5>Vrijdag</option>
-            </select>
-          </div>
-          <div class="col-xs-1 form-group">
-            <label for="row">Welk dagdeel</label>
-            <input 
-             type="number"
-             id="row"
-             name="row"
-             class="form-control"
-             ngModel
-             required>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-3">
-            <button
-             class="btn btn-success" 
-             type="submit">
-              Submit
-            </button>
-            <button
-             class="btn btn-primary"
-             type="button"
-             (click)="onSave()">
-              Save
-            </button>
-            <button 
-             class="btn btn-danger"
-             type="button"
-             (click)="onReset()">
-              Reset
-            </button>
-          </div>
-        </div>
-      </form>
+    <div class="col-md-4 offset-md-7">
+      <button 
+       class="btn btn-danger ml-2 pl-4 pr-4 shadow-sm float-right"
+       type="button"
+       (click)="onReset()">
+        Reset
+      </button>
+      <button
+       class="btn btn-success ml-2 shadow-sm float-right"
+       type="button"
+       data-toggle="modal"
+       data-target="#addPoint">
+        Voeg punt toe
+      </button>
+      <button
+       class="btn btn-primary pl-4 pr-4 shadow-sm float-right"
+       type="button"
+       (click)="onSave()">
+        Save
+      </button>
     </div>
   </div>
+  <hr>
+  <app-modal></app-modal>
 </div>

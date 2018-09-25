@@ -1,14 +1,16 @@
 import { Component, OnInit } from '@angular/core'
-import { FormGroup } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router'
 
 import { TimeTableSlot } from '../shared/time-table-slot.model'
 import { TimeTableSlotService } from '../shared/time-table-slot.service'
 import { DataStorageService } from '../shared/data-storage.service'
+import { load } from '../shared/animation'
 
 @Component({
   selector: 'app-timetable',
-  templateUrl: './time-table.component.html'
+  templateUrl: './time-table.component.html',
+  styleUrls: ['./time-table.component.css'],
+  animations: [load]
 })
 export class TimeTableComponent implements OnInit { 
   private timeTableSlots = []
@@ -23,13 +25,6 @@ export class TimeTableComponent implements OnInit {
       .subscribe((slots) => {
         this.construct(slots)
       })
-  }
-  onSubmit(form: FormGroup) {
-    const value = form.value
-    const col = +value.col
-    const slot = new TimeTableSlot(value.name, col, value.row)
-    this.ttsService.add(slot)
-    form.reset()
   }
   onSave() {
     this.dbService.storeTimeTable(this.ttsService.getSlots())

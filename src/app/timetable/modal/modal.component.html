@@ -1,0 +1,54 @@
+<div class="modal" id="addPoint" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body border border-dark rounded bg-light">
+        <form
+        #f="ngForm" 
+        class="text-center">
+        <div class="form-group col-md-10 offset-md-1 mt-3">
+          <label for="name">Naam</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            class="form-control"
+            ngModel
+            required> 
+        </div>
+        <div class="col-md-10 offset-md-1 form-group">
+          <label for="col">Welke dag?</label>
+          <select 
+            name="col"
+            id="col"
+            class="form-control custom-select"
+            ngModel
+            required>
+            <option value=1>Maandag</option>
+            <option value=2>Dinsdag</option>
+            <option value=3>Woensdag</option>
+            <option value=4>Donderdag</option>
+            <option value=5>Vrijdag</option>
+          </select>
+        </div>
+        <div class="col-md-10 offset-md-1 form-group">
+          <label for="row">Welk dagdeel</label>
+          <input 
+            type="number"
+            id="row"
+            name="row"
+            class="form-control"
+            ngModel
+            required>
+        </div>
+        <button
+          class="btn btn-info mb-3" 
+          type="button"
+          data-dismiss="modal"
+          (click)="onSubmit(f)">
+          Submit
+        </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

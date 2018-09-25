@@ -1,12 +1,12 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-info">
   <div class="container-fluid">
-    <a routerLink="" class="navbar-brand">BlackBoard }</a>
+    <a routerLink="" class="navbar-brand">EmbraceBoard</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav mr-auto">
-        <li routerLinkActive="active" class="nav-item active">
+        <li routerLinkActive="active" class="nav-item active ml-5">
           <a class="nav-link" routerLink="/timetable">Timetable</a>
         </li>
       </ul>
@@ -16,25 +16,22 @@
         </div>
         <ng-template #showLinks>
             <li routerLinkActive="active" class="nav-item">
-                <a class="nav-link" routerLink="/signup">Register</a>
+                <a class="nav-link text-light" routerLink="/signup">Register</a>
               </li>
               <li routerLinkActive="active" class="nav-item">
-                <a class="nav-link" routerLink="/signin">Log In</a>
+                <a class="nav-link text-light" routerLink="/signin">Log In</a>
               </li>
         </ng-template>
         <ng-template #showName>
           <li class="nav-item">
-            <a class="nav-link">u done logged in</a>
+            <a
+              class="nav-link text-light"
+              style="cursor: pointer" 
+              (click)="onLogout()" 
+              *ngIf="authService.isAuthenticated()">
+              Logout
+            </a>
           </li>
-          <li class="nav-item">
-              <a
-               class="nav-link"
-               style="cursor: pointer" 
-               (click)="onLogout()" 
-               *ngIf="authService.isAuthenticated()">
-                Logout
-              </a>
-            </li>
         </ng-template>
       </ul>
     </div>

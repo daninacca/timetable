@@ -14,16 +14,12 @@ export class DataStorageService {
                 private authService: AuthService) {}
 
     storeTimeTable(timeTable) {
-        const token = this.authService.getToken()
-
-        return this.http.put('https://blackboard-53316.firebaseio.com/roosters.json?auth=' + token,
+        return this.http.put('https://blackboard-53316.firebaseio.com/roosters.json',
         timeTable)
             .subscribe()
     }
     getTimeTable() {
-        const token = this.authService.getToken()
-
-        return this.http.get('https://blackboard-53316.firebaseio.com/roosters.json?auth=' + token)
+        return this.http.get('https://blackboard-53316.firebaseio.com/roosters.json')
             .subscribe(
                 (response: Response) => {
                     const timeTable = response.json()
