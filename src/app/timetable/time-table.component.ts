@@ -30,11 +30,8 @@ export class TimeTableComponent implements OnInit {
   onSave() {
     this.dbService.storeTimeTable(this.ttsService.getSlots())
   }
-  onDelete(e) {
-    this.ttsService.deleteSlot(e)
-  }
-  onReset() {
-    this.ttsService.reset()
+  onDelete(e: TimeTableSlot | TimeTableSlot[]) {
+      this.ttsService.delete(e)
   }
   construct(slots) {
     // loop rows
@@ -42,7 +39,7 @@ export class TimeTableComponent implements OnInit {
       const newArr = slots.filter(e => e.row === i + 1)
       // loop cols & create dummies
       for(let l = 0; l < 6; l++) {
-        if(!newArr.find((slot) => slot.col === l)) {
+        if(!newArr.find(slot => slot.col === l)) {
           newArr.splice(l, 0, new TimeTableSlot("", l, i))
         }
       }

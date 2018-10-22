@@ -23,26 +23,24 @@ export class DataStorageService {
             .subscribe(
                 (response: Response) => {
                     const timeTable = response.json()
-                    const newArr = []
-                    timeTable.map((e) => {
-                        newArr.push(
-                            new TimeTableSlot(e.name, e.col, e.row)
+                    const newArr = timeTable.map((e) => {
+                        return new TimeTableSlot(e.name, e.col, e.row)
+                    })
+                    // on page reload
+                    if(this.isReload(newArr)) {
+                        this.ttsService.timeTableChanged.next(
+                            this.ttsService.getSlots()
                         )
-                    })
-                    // Check if page is being reloaded or init'ed
-                    newArr.map((e) => {
-                        if(!this.ttsService.exists(e, this.ttsService.getSlots())) {
-                            this.alreadyExists = true
-                        }
-                    })
-                        // if it's init: init
-                    if(this.alreadyExists == false) {
-                        this.ttsService.add(newArr)
-                        // if it's a reload: reload
-                    } else {
-                        this.ttsService.timeTableChanged.next(this.ttsService.getSlots())
-                    }
+                    } 
+                    // on page init
+                    this.ttsService.add(newArr)
                 } 
             )
+    }
+    isReload([head, ...rest]) {
+        if(!head) {
+            return false
+        }
+        return this.ttsService.exists(head, this.ttsService.getSlots() ||           this.isReload(rest))
     }
 }
